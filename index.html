@@ -7,17 +7,28 @@
   </head>
   <body>
     <section class="create-card">
-      <input type="text" id="title"></input>
-      <input type="text" id="body"></input>
-      <button class="save-card">Save</button>
-      <div>
-        <button class="search-cards" src="">
-          <img>
-        </button>
-        <input type="text" placeholder="search ideas" id="search"></input>
-      </div>
+      <form>
+        <input type="text" id="title"></input>
+        <input type="text" id="body"></input>
+        <button class="save-card">Save</button>
+        <div>
+          <button class="search-cards" src="">
+            <img>
+          </button>
+          <input type="text" placeholder="search ideas" id="search"></input>
+        </div>
+      </form>
     </section>
-    <section></section>
+    <section class="idea-cards">
+      <article class="card">
+        <div class="fav-or-delete">
+          <img class="star">
+          <img class=" star-active hidden">
+          <img class="delete">
+          <img class="delete-active hidden">
+        </div>
+      </article>
+    </section>
     <section></section>
     <script src="./src/main.js"></script>
   </body>
