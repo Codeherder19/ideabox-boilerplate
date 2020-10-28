@@ -1,0 +1,118 @@
+* {
+  font-family: Open Sans;
+  font-style: bold;
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  display: flex;
+}
+
+.create-card {
+  display: flex;
+  height: 50%;
+  background-color: #A9AAD2;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}
+
+#title {
+  width: 40%;
+  height: 10%;
+}
+
+#body {
+  width: 40%;
+  height: 20%;
+}
+
+.save-card {
+  background-color: #1F1F3D;
+  color: #ffffff;
+  width: 40%;
+  height: 10%;
+}
+
+.search-bar {
+  display:flex;
+  width: 40%;
+  height: 10%;
+}
+
+#search {
+  width: 75%;
+  height: 87.5%;
+  border-color: #1F1F3D;
+}
+
+.search-button {
+  background-color: #1F1F3D;
+  width: 25%;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  height: 20%;
+}
+
+.fav-or-delete {
+  display: flex;
+}
+
+.idea-cards {
+  display: flex;
+  justify-content: space-around;
+  height: 50%;
+  background-color: #EAEAF4;
+}
+
+.hidden {
+  display: none;
+}
+
+.filter-ideas {
+  display: flex;
+  flex-direction: column;
+  /* align-self: flex-start; */
+  width: 20%;
+  background-color: #1F1F3D;
+  color: #ffffff;
+}
+
+
+h1 {
+  height: 10%;
+}
+
+h2 {
+  height: 2%;
+  font-size: 80%;
+}
+
+hr {
+  height: 0%;
+  background-color: #353567;
+}
+
+.show-starred {
+  display: flex;
+  align-self: center;
+  height: 3%;
+  width: 90%;
+  color: #E9E9F3;
+  background-color: #5356A4;
+  border-color: #353567;
+}
+
+#title {
+
+}
