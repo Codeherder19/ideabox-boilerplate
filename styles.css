@@ -34,18 +34,27 @@ form {
 h4 {
   height: 10%;
   margin-top: 0%;
+  color: #1F1F3D;
 }
 
 #title {
   width: 40%;
   height: 1000%;
   margin-top: 2%;
+  border: solid;
+  border-color: #5356A4;
+  border-width: thin;
+  border-radius: 3px;
 }
 
 #body {
   width: 40%;
   height: 200%;
   margin-top: 2%;
+  border: solid;
+  border-color: #5356A4;
+  border-width: thin;
+  border-radius: 3px;
 }
 
 .create-body {
@@ -59,6 +68,10 @@ h4 {
   color: #ffffff;
   width: 40%;
   height: 10%;
+  border: solid;
+  border-color: #5356A4;
+  border-width: thin;
+  border-radius: 3px;
 }
 
 .search-bar {
@@ -69,13 +82,26 @@ h4 {
 
 #search {
   width: 75%;
-  height: 87.5%;
-  border-color: #1F1F3D;
+  height: 95%;
+  border: solid;
+  border-color: #5356A4;
+  border-width: thin;
+  border-left: none;
+  border-radius: 3px;
+}
+
+::placeholder {
+    color: #A9AAD2;
 }
 
 .search-button {
   background-color: #1F1F3D;
   width: 25%;
+  border: solid;
+  border-color: #5356A4;
+  border-width: thin;
+  border-right: none;
+  border-radius: 3px;
 }
 
 .card {
@@ -116,6 +142,7 @@ h1 {
 h2 {
   height: 2%;
   font-size: 80%;
+  margin-top: 7.5%;
 }
 
 hr {
@@ -125,10 +152,16 @@ hr {
 
 .show-starred {
   display: flex;
+  justify-content: center;
   align-self: center;
-  height: 3%;
-  width: 90%;
+  font-size: 120%;
+  height: 6%;
+  width: 80%;
   color: #E9E9F3;
   background-color: #5356A4;
   border-color: #353567;
+  margin-top: 7.5%;
+  margin-bottom: 7.5%;
+  padding-top: 1%;
+
 }
