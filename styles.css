@@ -13,7 +13,7 @@ body {
 
 .create-card {
   display: flex;
-  height: 50%;
+  height: 40%;
   background-color: #A9AAD2;
 }
 
@@ -116,9 +116,42 @@ h4 {
 
 .idea-cards {
   display: flex;
-  justify-content: space-around;
-  height: 50%;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-evenly;
+  height: 60%;
   background-color: #EAEAF4;
+}
+
+.card {
+  width: 30%;
+  height: 40%;
+  border: solid;
+  border-width: thin;
+}
+
+.fav-or-delete {
+  display: flex;
+  justify-content: space-between;
+  background-color: black;
+  border: none;
+  height: 20%;
+}
+
+.star {
+  display: flex;
+  /* justify-content: flex-start;  */
+  border-color: black;
+  height: 80%;
+  width: 80%;
+}
+
+.delete {
+  border-color: black;
+}
+
+.card-body {
+  height: 280%;
 }
 
 .hidden {
@@ -137,16 +170,20 @@ h4 {
 
 h1 {
   height: 10%;
+  margin-left: 5%;
+  margin-top: 5%;
 }
 
 h2 {
   height: 2%;
   font-size: 80%;
   margin-top: 7.5%;
+  margin-left: 5%;
 }
 
 hr {
-  height: 0%;
+  height: 1px;
+  border: none;
   background-color: #353567;
 }
 
