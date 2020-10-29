@@ -113,6 +113,13 @@ h4 {
 .card {
   display: flex;
   flex-direction: column;
+  width: 30%;
+  height: 45%;
+  border: solid;
+  border-width: thin;
+}
+
+h3 {
   height: 20%;
 }
 
@@ -125,30 +132,41 @@ h4 {
   background-color: #EAEAF4;
 }
 
-.card {
-  width: 30%;
-  height: 40%;
-  border: solid;
-  border-width: thin;
-}
 
 .fav-or-delete {
   display: flex;
   justify-content: space-between;
   background-color: black;
   border: none;
+  height: 20%;
 }
 
 .star {
   display: flex;
-  /* justify-content: flex-start;  */
   border-color: black;
-  height: 80%;
-  width: 80%;
+  height: 100%;
+  width: 20%;
 }
 
 .delete {
+  display: flex;
   border-color: black;
+  height: 100%;
+  width: 20%;
+}
+
+.comment {
+  background-color: #5356A4;
+  height: 20%;
+  display: flex;
+  align-items: center;
+}
+
+.comment-image {
+  display: flex;
+  border-color: black;
+  height: 100%;
+  width: 20%;
 }
 
 .card-body {
@@ -182,6 +200,10 @@ h2 {
   margin-left: 5%;
 }
 
+.comment-text {
+  color: #ffffff;
+}
+
 hr {
   height: 1px;
   border: none;
@@ -201,5 +223,4 @@ hr {
   margin-top: 7.5%;
   margin-bottom: 7.5%;
   padding-top: 1%;
-
 }
