@@ -5,11 +5,9 @@ var titleInput = document.querySelector('#title');
 var bodyInput = document.querySelector('#body');
 var savedPostersSection = document.querySelector(".idea-cards");
 
-
 saveButton.addEventListener('click', displayCard);
 titleInput.addEventListener('keyup', enableSaveButton);
 bodyInput.addEventListener('keyup', enableSaveButton);
-
 
 function displayCard(event) {
   event.preventDefault();
