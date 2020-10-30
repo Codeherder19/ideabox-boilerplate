@@ -4,11 +4,9 @@ var saveButton = document.querySelector('.save-card');
 var titleInput = document.querySelector('#title');
 var bodyInput = document.querySelector('#body');
 var savedPostersSection = document.querySelector(".idea-cards");
-//var inputs = document.querySelectorAll('.card-input');
 
 
 saveButton.addEventListener('click', displayCard);
-//inputs.addEventListener('input', enableSaveButton);
 titleInput.addEventListener('keyup', enableSaveButton);
 bodyInput.addEventListener('keyup', enableSaveButton);
 
@@ -29,6 +27,8 @@ function createCard() {
 function clearInputFields() {
   titleInput.value = null;
   bodyInput.value = null;
+  saveButton.disabled = true;
+  saveButton.classList.remove('enable');
 };
 
 function inputCardToHTML() {
