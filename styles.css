@@ -69,7 +69,7 @@ h4 {
 }
 
 .save-card {
-  background-color: #1F1F3D;
+  background-color: gray;
   color: #ffffff;
   width: 100%;
   height: 10%;
@@ -78,6 +78,10 @@ h4 {
   border-width: thin;
   border-radius: 3px;
   margin-top: 10%;
+}
+
+.enable {
+  background-color: #1F1F3D;
 }
 
 .search-bar {
@@ -118,6 +122,7 @@ h4 {
   height: 45%;
   border: solid;
   border-width: thin;
+  border-color:
 }
 
 h3 {
@@ -219,10 +224,8 @@ hr {
 }
 
 .show-starred {
-  display: flex;
-  justify-content: center;
   align-self: center;
-  font-size: 120%;
+  font-size: 100%;
   height: 6%;
   width: 80%;
   color: #E9E9F3;
