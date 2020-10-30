@@ -69,7 +69,7 @@ h4 {
 }
 
 .save-card {
-  background-color: #1F1F3D;
+  background-color: gray;
   color: #ffffff;
   width: 100%;
   height: 10%;
@@ -78,6 +78,10 @@ h4 {
   border-width: thin;
   border-radius: 3px;
   margin-top: 10%;
+}
+
+.enable {
+  background-color: #1F1F3D;
 }
 
 .search-bar {
