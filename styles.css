@@ -149,7 +149,8 @@ h3 {
   height: 15%;
 }
 
-.star {
+.star,
+.star-active {
   display: flex;
   border-color: black;
   height: 100%;
