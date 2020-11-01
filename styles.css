@@ -164,6 +164,14 @@ h3 {
   width: 20%;
 }
 
+.delete-active: hover {
+  display: flex;
+  border-color: black;
+  height: 100%;
+  width: 20%;
+}
+
+
 .comment {
   background-color: #5356A4;
   height: 15%;

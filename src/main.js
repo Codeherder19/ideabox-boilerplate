@@ -5,11 +5,13 @@ var titleInput = document.querySelector('#title');
 var bodyInput = document.querySelector('#body');
 var savedIdeasSection = document.querySelector(".idea-cards");
 
-
 saveButton.addEventListener('click', displayCard);
 titleInput.addEventListener('keyup', enableSaveButton);
 bodyInput.addEventListener('keyup', enableSaveButton);
 savedIdeasSection.addEventListener('click', runningMethodsOnCardButtons);
+// savedIdeasSection.addEventListener('mouseover', deleteImageActive);
+// savedIdeasSection.addEventListener('mouseleave', deleteImageActive);
+
 
 function runningMethodsOnCardButtons(event) {
   if (event.target.className === "delete") {
@@ -20,19 +22,30 @@ function runningMethodsOnCardButtons(event) {
   }
 };
 
-function toggleFavoriteOnAndOff (on, off) {
+
+
+function toggleIconOnAndOff (on, off) {
   on.classList.toggle('hidden');
   off.classList.toggle('hidden');
 };
 
+// function deleteImageActive() {
+//   var deleteImage = document.querySelector(".delete");
+//   var deleteActive = document.querySelector(".delete-active");
+//     if (event.target.className === 'delete') {
+//       toggleIconOnAndOff(deleteImage, deleteActive);
+//     }
+//     else {
+//       toggleIconOnAndOff(deleteActive, deleteImage);
+//     }
+// };
+
 function favoriteCard() {
-  var favorite = document.querySelector(".star");
-  var unfavorite = document.querySelector(".star-active");
     if (event.target.className === 'star') {
-      toggleFavoriteOnAndOff(favorite, unfavorite)
+      starOnAndOff();
     }
     else {
-      toggleFavoriteOnAndOff(unfavorite, favorite)
+      starOnAndOff();
     }
 };
 
@@ -45,6 +58,23 @@ function removeCard () {
     }
   }
 };
+
+function starOnAndOff () {
+  var favorite = document.querySelectorAll(".star");
+  var unfavorite = document.querySelectorAll(".star-active");
+  var cardID = event.target.parentElement.id;
+  for (var i = 0; i < ideas.length; i++) {
+    if (ideas[i].id == cardID && ideas[i].star === false) {
+      ideas[i].star = true;
+      toggleIconOnAndOff(favorite[i], unfavorite[i]);
+    }
+    else if (ideas[i].id == cardID && ideas[i].star === true) {
+      ideas[i].star = false;
+      toggleIconOnAndOff(unfavorite[i], favorite[i]);
+    }
+  }
+};
+
 
 function displayCard(event) {
   event.preventDefault();
