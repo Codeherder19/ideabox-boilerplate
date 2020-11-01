@@ -162,13 +162,11 @@ h3 {
   border-color: black;
   height: 100%;
   width: 20%;
+  background-image: url(assets/delete.svg);
 }
 
-.delete-active: hover {
-  display: flex;
-  border-color: black;
-  height: 100%;
-  width: 20%;
+.delete:hover {
+  background-image: url(assets/delete-active.svg);
 }
 
 
@@ -202,7 +200,6 @@ p {
 .filter-ideas {
   display: flex;
   flex-direction: column;
-  /* align-self: flex-start; */
   width: 30%;
   background-color: #1F1F3D;
   color: #ffffff;

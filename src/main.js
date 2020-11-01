@@ -103,8 +103,7 @@ function inputCardToHTML() {
       <div class="fav-or-delete" id="${ideas[i].id}">
         <img class="star" src="assets/star.svg">
         <img class="star-active hidden" src="assets/star-active.svg">
-        <img class="delete" src="assets/delete.svg">
-        <img class="delete-active hidden" src="assets/delete-active.svg">
+        <div class="delete"></div>
       </div>
       <div class="card-body">
         <h3>${ideas[i].title}</h3>
