@@ -8,7 +8,8 @@ class Idea {
 
 //should only have one job which is to save the instance to storage
   saveToStorage() {
-
+    var locallyStoredIdea = this;
+    localStorage.setItem(this.id, JSON.stringify(locallyStoredIdea));
   }
 
   deleteFromStorage() {
