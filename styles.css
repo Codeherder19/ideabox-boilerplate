@@ -149,7 +149,8 @@ h3 {
   height: 15%;
 }
 
-.star {
+.star,
+.star-active {
   display: flex;
   border-color: black;
   height: 100%;
@@ -161,7 +162,13 @@ h3 {
   border-color: black;
   height: 100%;
   width: 20%;
+  background-image: url(assets/delete.svg);
 }
+
+.delete:hover {
+  background-image: url(assets/delete-active.svg);
+}
+
 
 .comment {
   background-color: #5356A4;
@@ -193,7 +200,6 @@ p {
 .filter-ideas {
   display: flex;
   flex-direction: column;
-  /* align-self: flex-start; */
   width: 30%;
   background-color: #1F1F3D;
   color: #ffffff;

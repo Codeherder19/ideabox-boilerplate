@@ -3,11 +3,78 @@ var ideas = [];
 var saveButton = document.querySelector('.save-card');
 var titleInput = document.querySelector('#title');
 var bodyInput = document.querySelector('#body');
-var savedPostersSection = document.querySelector(".idea-cards");
+var savedIdeasSection = document.querySelector(".idea-cards");
 
 saveButton.addEventListener('click', displayCard);
 titleInput.addEventListener('keyup', enableSaveButton);
 bodyInput.addEventListener('keyup', enableSaveButton);
+savedIdeasSection.addEventListener('click', runningMethodsOnCardButtons);
+// savedIdeasSection.addEventListener('mouseover', deleteImageActive);
+// savedIdeasSection.addEventListener('mouseleave', deleteImageActive);
+
+
+function runningMethodsOnCardButtons(event) {
+  if (event.target.className === "delete") {
+    removeCard();
+  }
+  else if (event.target.className === "star" || event.target.className === "star-active") {
+    favoriteCard();
+  }
+};
+
+
+
+function toggleIconOnAndOff (on, off) {
+  on.classList.toggle('hidden');
+  off.classList.toggle('hidden');
+};
+
+// function deleteImageActive() {
+//   var deleteImage = document.querySelector(".delete");
+//   var deleteActive = document.querySelector(".delete-active");
+//     if (event.target.className === 'delete') {
+//       toggleIconOnAndOff(deleteImage, deleteActive);
+//     }
+//     else {
+//       toggleIconOnAndOff(deleteActive, deleteImage);
+//     }
+// };
+
+function favoriteCard() {
+    if (event.target.className === 'star') {
+      starOnAndOff();
+    }
+    else {
+      starOnAndOff();
+    }
+};
+
+function removeCard () {
+  var cardID = event.target.parentElement.id;
+  for (var i = 0; i < ideas.length; i++) {
+    if (ideas[i].id == cardID) {
+      ideas.splice(i, 1);
+      inputCardToHTML();
+    }
+  }
+};
+
+function starOnAndOff () {
+  var favorite = document.querySelectorAll(".star");
+  var unfavorite = document.querySelectorAll(".star-active");
+  var cardID = event.target.parentElement.id;
+  for (var i = 0; i < ideas.length; i++) {
+    if (ideas[i].id == cardID && ideas[i].star === false) {
+      ideas[i].star = true;
+      toggleIconOnAndOff(favorite[i], unfavorite[i]);
+    }
+    else if (ideas[i].id == cardID && ideas[i].star === true) {
+      ideas[i].star = false;
+      toggleIconOnAndOff(unfavorite[i], favorite[i]);
+    }
+  }
+};
+
 
 function displayCard(event) {
   event.preventDefault();
@@ -19,7 +86,6 @@ function displayCard(event) {
 function createCard() {
   var ideaCard = new Idea(titleInput.value, bodyInput.value);
   ideas.push(ideaCard);
-  console.log(ideas);
 };
 
 function clearInputFields() {
@@ -30,15 +96,14 @@ function clearInputFields() {
 };
 
 function inputCardToHTML() {
-  savedPostersSection.innerHTML = "";
+  savedIdeasSection.innerHTML = "";
   for (var i = 0; i < ideas.length; i++) {
-    savedPostersSection.innerHTML += `
+    savedIdeasSection.innerHTML += `
     <article class="card">
-      <div class="fav-or-delete">
+      <div class="fav-or-delete" id="${ideas[i].id}">
         <img class="star" src="assets/star.svg">
         <img class="star-active hidden" src="assets/star-active.svg">
-        <img class="delete" src="assets/delete.svg">
-        <img class="delete-active hidden" src="assets/delete-active.svg">
+        <div class="delete"></div>
       </div>
       <div class="card-body">
         <h3>${ideas[i].title}</h3>
@@ -60,4 +125,4 @@ function enableSaveButton() {
     saveButton.classList.remove('enable');
     saveButton.disabled = true;
   }
-}
+};
