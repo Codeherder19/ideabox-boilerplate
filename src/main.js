@@ -5,6 +5,7 @@ var titleInput = document.querySelector('#title');
 var bodyInput = document.querySelector('#body');
 var savedIdeasSection = document.querySelector(".idea-cards");
 var showStarredIdeasButton = document.querySelector('.show-starred');
+var searchBar = document.querySelector('#search');
 
 saveButton.addEventListener('click', displayCard);
 titleInput.addEventListener('keyup', enableSaveButton);
@@ -12,6 +13,18 @@ bodyInput.addEventListener('keyup', enableSaveButton);
 savedIdeasSection.addEventListener('click', runningMethodsOnCardButtons);
 window.addEventListener('load', retrieveIdeasFromLocalStorage);
 showStarredIdeasButton.addEventListener('click', filterStarredIdeas);
+searchBar.addEventListener('keyup', searchIdeas);
+
+function searchIdeas() {
+  var cardsToBeHidden = document.querySelectorAll('.card');
+  for (var i = 0; i < ideas.length; i++) {
+    if (ideas[i].title.includes(searchBar.value) || ideas[i].body.includes(searchBar.value)) {
+      cardsToBeHidden[i].classList.remove('hidden');
+    } else if (!ideas[i].title.includes(searchBar.value) || !ideas[i].body.includes(searchBar.value)) {
+        cardsToBeHidden[i].classList.add('hidden');
+    }
+  }
+};
 
 function filterStarredIdeas() {
   if (showStarredIdeasButton.innerText == "Show Starred Ideas") {
@@ -22,7 +35,7 @@ function filterStarredIdeas() {
     showStarredIdeasButton.innerHTML = `<strong>Show Starred Ideas</strong>`;
     showAllCards();
   }
-}
+};
 
 function showStarredCards() {
   var ideaCardArticle = document.querySelectorAll(".card");
@@ -31,7 +44,7 @@ function showStarredCards() {
       ideaCardArticle[i].classList.add('hidden');
     }
   }
-}
+};
 
 function showAllCards() {
   var ideaCardArticle = document.querySelectorAll(".card");
@@ -40,7 +53,7 @@ function showAllCards() {
       ideaCardArticle[i].classList.remove('hidden');
     }
   }
-}
+};
 
 
 function retrieveIdeasFromLocalStorage() {
@@ -57,7 +70,7 @@ function retrieveIdeasFromLocalStorage() {
   }
   inputCardToHTML();
   persistFavoriteOnPageReload();
-}
+};
 
 function runningMethodsOnCardButtons(event) {
   if (event.target.className === "delete") {
@@ -86,9 +99,10 @@ function removeCard() {
   var cardID = event.target.parentElement.id;
   for (var i = 0; i < ideas.length; i++) {
     if (ideas[i].id == cardID) {
-      ideas.splice(i, 1);
       ideas[i].deleteFromStorage();
+      ideas.splice(i, 1);
       inputCardToHTML();
+      persistFavoriteOnPageReload();
     }
   }
 };
