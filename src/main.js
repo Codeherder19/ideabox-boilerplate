@@ -21,6 +21,7 @@ function retrieveIdeasFromLocalStorage() {
     localIdea = localStorage.getItem(localStorage.key(i));
     parsedLocalIdea = JSON.parse(localIdea);
     savedIdea = new Idea(parsedLocalIdea.title, parsedLocalIdea.body);
+    savedIdea.id = parsedLocalIdea.id;
     ideas.push(savedIdea);
   }
   inputCardToHTML();
