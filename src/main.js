@@ -7,19 +7,24 @@ var savedIdeasSection = document.querySelector(".idea-cards");
 var searchAllIdeas = document.querySelector('#search-button');
 var showStarredIdeasButton = document.querySelector('#show-starred');
 
-// saveButton.addEventListener('click', saveEachCardToLocalStorage);
 saveButton.addEventListener('click', displayCard);
 titleInput.addEventListener('keyup', enableSaveButton);
 bodyInput.addEventListener('keyup', enableSaveButton);
 savedIdeasSection.addEventListener('click', runningMethodsOnCardButtons);
-// savedIdeasSection.addEventListener('mouseover', deleteImageActive);
-// savedIdeasSection.addEventListener('mouseleave', deleteImageActive);
+window.addEventListener('load', retrieveIdeasFromLocalStorage);
 
-function saveEachCardToLocalStorage() {
-  for (var i = 0; i < ideas.length; i++) {
-    ideas[i].saveToStorage();
+function retrieveIdeasFromLocalStorage() {
+  var localIdea;
+  var parsedLocalIdea;
+  var savedIdea;
+  for (var i = 0; i < localStorage.length; i++)  {
+    localIdea = localStorage.getItem(localStorage.key(i));
+    parsedLocalIdea = JSON.parse(localIdea);
+    savedIdea = new Idea(parsedLocalIdea.title, parsedLocalIdea.body);
+    ideas.push(savedIdea);
   }
-};
+  inputCardToHTML();
+}
 
 function runningMethodsOnCardButtons(event) {
   if (event.target.className === "delete") {
@@ -29,8 +34,6 @@ function runningMethodsOnCardButtons(event) {
     favoriteCard();
   }
 };
-
-
 
 function toggleIconOnAndOff (on, off) {
   on.classList.toggle('hidden');
@@ -77,12 +80,12 @@ function displayCard(event) {
   createCard();
   inputCardToHTML();
   clearInputFields();
-  saveEachCardToLocalStorage();
 };
 
 function createCard() {
   var ideaCard = new Idea(titleInput.value, bodyInput.value);
   ideas.push(ideaCard);
+  ideaCard.saveToStorage();
 };
 
 function clearInputFields() {
