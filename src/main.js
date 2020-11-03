@@ -13,6 +13,7 @@ bodyInput.addEventListener('keyup', enableSaveButton);
 savedIdeasSection.addEventListener('click', runningMethodsOnCardButtons);
 window.addEventListener('load', retrieveIdeasFromLocalStorage);
 
+
 function retrieveIdeasFromLocalStorage() {
   var localIdea;
   var parsedLocalIdea;
@@ -22,9 +23,11 @@ function retrieveIdeasFromLocalStorage() {
     parsedLocalIdea = JSON.parse(localIdea);
     savedIdea = new Idea(parsedLocalIdea.title, parsedLocalIdea.body);
     savedIdea.id = parsedLocalIdea.id;
+    savedIdea.star = parsedLocalIdea.star;
     ideas.push(savedIdea);
   }
   inputCardToHTML();
+  persistFavoriteOnPageReload();
 }
 
 function runningMethodsOnCardButtons(event) {
@@ -55,7 +58,23 @@ function removeCard () {
   for (var i = 0; i < ideas.length; i++) {
     if (ideas[i].id == cardID) {
       ideas.splice(i, 1);
+      ideas[i].deleteFromStorage();
       inputCardToHTML();
+    }
+  }
+};
+
+function persistFavoriteOnPageReload () {
+  var favorite = document.querySelectorAll(".star");
+  var unfavorite = document.querySelectorAll(".star-active");
+  for (var i = 0; i < ideas.length; i++) {
+    if (ideas[i].star === true) {
+    favorite[i].classList.add('hidden');
+    unfavorite[i].classList.remove('hidden');
+     }
+    else if (ideas[i].star === false) {
+    unfavorite[i].classList.add('hidden');
+    favorite[i].classList.remove('hidden');
     }
   }
 };
@@ -67,10 +86,12 @@ function starOnAndOff () {
   for (var i = 0; i < ideas.length; i++) {
     if (ideas[i].id == cardID && ideas[i].star === false) {
       ideas[i].star = true;
+      ideas[i].saveToStorage();
       toggleIconOnAndOff(favorite[i], unfavorite[i]);
     }
     else if (ideas[i].id == cardID && ideas[i].star === true) {
       ideas[i].star = false;
+      ideas[i].saveToStorage();
       toggleIconOnAndOff(unfavorite[i], favorite[i]);
     }
   }
@@ -80,6 +101,7 @@ function displayCard(event) {
   event.preventDefault();
   createCard();
   inputCardToHTML();
+  persistFavoriteOnPageReload();
   clearInputFields();
 };
 
