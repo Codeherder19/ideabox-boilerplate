@@ -17,8 +17,6 @@ class Idea {
   }
 //should be able to update the idea's title, body, or starred state
   updateIdea() {
-    var storedStarredValue = this.star;
-    var retrieveStoredIdea = localStorage.getItem(this.id);
-    JSON.parse(retrieveStoredIdea);
+
   }
 }
