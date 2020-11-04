@@ -6,7 +6,6 @@ class Idea {
     this.star = false;
   }
 
-//should only have one job which is to save the instance to storage
   saveToStorage() {
     var locallyStoredIdea = this;
     localStorage.setItem(this.id, JSON.stringify(locallyStoredIdea));
@@ -15,7 +14,7 @@ class Idea {
   deleteFromStorage() {
     localStorage.removeItem(this.id);
   }
-//should be able to update the idea's title, body, or starred state
+
   updateIdea() {
 
   }
