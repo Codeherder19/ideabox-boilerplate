@@ -12,7 +12,7 @@ bodyInput.addEventListener('keyup', enableSaveButton);
 titleInput.addEventListener('keyup', enableSaveButton);
 saveButton.addEventListener('click', displayCard);
 window.addEventListener('load', retrieveIdeasFromLocalStorage);
-savedIdeasSection.addEventListener('click', runningMethodsOnCardButtons);
+savedIdeasSection.addEventListener('click', handleDeleteOrFavoriteEvents);
 showStarredIdeasButton.addEventListener('click', filterStarredIdeas);
 searchBar.addEventListener('keyup', searchIdeas);
 
@@ -67,13 +67,17 @@ function inputCardToHTML() {
 function persistFavoriteOnPageReload() {
   var favorite = document.querySelectorAll(".star");
   var unfavorite = document.querySelectorAll(".star-active");
+  favoriteCardsOnLocalStorage(favorite, unfavorite);
+};
+
+function favoriteCardsOnLocalStorage(star, starActive) {
   for (var i = 0; i < ideas.length; i++) {
     if (ideas[i].star === true) {
-      favorite[i].classList.add('hidden');
-      unfavorite[i].classList.remove('hidden');
+      star[i].classList.add('hidden');
+      starActive[i].classList.remove('hidden');
     } else if (ideas[i].star === false) {
-      unfavorite[i].classList.add('hidden');
-      favorite[i].classList.remove('hidden');
+      starActive[i].classList.add('hidden');
+      star[i].classList.remove('hidden');
     }
   }
 };
@@ -90,6 +94,12 @@ function retrieveIdeasFromLocalStorage() {
   var localIdea;
   var parsedLocalIdea;
   var savedIdea;
+  pushLocalStorageToIdeas();
+  inputCardToHTML();
+  persistFavoriteOnPageReload();
+};
+
+function pushLocalStorageToIdeas() {
   for (var i = 0; i < localStorage.length; i++) {
     localIdea = localStorage.getItem(localStorage.key(i));
     parsedLocalIdea = JSON.parse(localIdea);
@@ -98,12 +108,10 @@ function retrieveIdeasFromLocalStorage() {
     savedIdea.star = parsedLocalIdea.star;
     ideas.push(savedIdea);
   }
-  inputCardToHTML();
-  persistFavoriteOnPageReload();
 };
 
 
-function runningMethodsOnCardButtons(event) {
+function handleDeleteOrFavoriteEvents(event) {
   if (event.target.className === "delete") {
     removeCard();
   } else if (event.target.className === "star" || event.target.className === "star-active") {
@@ -135,15 +143,19 @@ function starOnAndOff() {
   var favorite = document.querySelectorAll(".star");
   var unfavorite = document.querySelectorAll(".star-active");
   var cardID = event.target.parentElement.id;
+  toggleFavoriteIcon(cardID, favorite, unfavorite);
+};
+
+function toggleFavoriteIcon(cardID, star, starActive) {
   for (var i = 0; i < ideas.length; i++) {
     if (ideas[i].id == cardID && ideas[i].star === false) {
       ideas[i].star = true;
       ideas[i].saveToStorage();
-      toggleIconOnAndOff(favorite[i], unfavorite[i]);
+      toggleIconOnAndOff(starActive[i], star[i]);
     } else if (ideas[i].id == cardID && ideas[i].star === true) {
       ideas[i].star = false;
       ideas[i].saveToStorage();
-      toggleIconOnAndOff(unfavorite[i], favorite[i]);
+      toggleIconOnAndOff(star[i], starActive[i]);
     }
   }
 };
@@ -157,27 +169,18 @@ function toggleIconOnAndOff(on, off) {
 function filterStarredIdeas() {
   if (showStarredIdeasButton.innerText === "Show Starred Ideas") {
     showStarredIdeasButton.innerHTML = `<strong>Show All Ideas</strong>`;
-    showStarredCards();
+    showOrHideFavoriteCards();
   } else if (showStarredIdeasButton.innerText === "Show All Ideas") {
     showStarredIdeasButton.innerHTML = `<strong>Show Starred Ideas</strong>`;
-    showAllCards();
+    showOrHideFavoriteCards();
   }
 };
 
-function showStarredCards() {
+function showOrHideFavoriteCards() {
   var ideaCardArticle = document.querySelectorAll(".card");
   for (var i = 0; i < ideas.length; i++) {
     if (ideas[i].star === false) {
-      ideaCardArticle[i].classList.add('hidden');
-    }
-  }
-};
-
-function showAllCards() {
-  var ideaCardArticle = document.querySelectorAll(".card");
-  for (var i = 0; i < ideas.length; i++) {
-    if (ideas[i].star === false) {
-      ideaCardArticle[i].classList.remove('hidden');
+      ideaCardArticle[i].classList.toggle('hidden');
     }
   }
 };
