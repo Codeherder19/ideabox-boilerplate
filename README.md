@@ -2,10 +2,10 @@
 
 
 ## Contributors:
-- **Brian Forbes**
-- **Christina Cook**
-- **Luke Mason**
-- **Johnny Cassidy**
+- [**Brian Forbes**](https://github.com/Codeherder19)
+- [**Christina Cook**](https://github.com/christina-cook)
+- [**Luke Mason**](https://github.com/LukeMason33 )
+- [**Johnny Cassidy**](https://github.com/pJanks)
 
 
 ## Technologies Used:
@@ -20,6 +20,7 @@
 ## Instructions for running/viewing the project:
 Welcome to Idea Box! To get started, just enter a title for your idea in the title input field, enter the idea itself in the body input field, press the save button and VOILA! You will see your idea card appear in the blank section below! Do you have many ideas, some more favored than others? Click the star icon to "favorite" an idea. Got a lot of ideas, some favorite and some not so favorite and you need to filter through them? Click on the "Show Starred Ideas" button to the left and you will see only those with a red star which indicates it is a favored idea. If you want to view all of your ideas again, simply click the "Show All Ideas" button (formerly "Show Starred Ideas") and you will see every idea, favorite or not. You can also search all of your ideas by key words or phrases! Simply type the key word or phrase into the "search ideas" input field and your ideas will be filtered to only show those that contain the key word or phrase in either the title or the body. Once you are done with an idea or no longer need to store it in Idea Box, click the "X" in the top right hand corner of the idea card to delete it. Local storage is updated every time you create, favorite, or delete a card, so your ideas are safe should you decide to end your session or accidentally reload the page.
 
+![Screenshot of ideas](assets/ideabox_screenshot.png)
 
 ### Deploy Links
 [Find the repo here](https://github.com/LukeMason33/ideabox-boilerplate.git)
