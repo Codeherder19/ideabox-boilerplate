@@ -14,8 +14,4 @@ class Idea {
   deleteFromStorage() {
     localStorage.removeItem(this.id);
   }
-
-  updateIdea() {
-
-  }
 }

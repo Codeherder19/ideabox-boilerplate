@@ -17,7 +17,6 @@ showStarredIdeasButton.addEventListener('click', filterStarredIdeas);
 searchBar.addEventListener('keyup', searchIdeas);
 
 
-//event handler for bodyInput and titleInput
 function enableSaveButton() {
   if (titleInput.value !== "" && bodyInput.value !== "") {
     saveButton.classList.add('enable');
@@ -29,7 +28,6 @@ function enableSaveButton() {
 };
 
 
-//event handlers for saveButton
 function displayCard(event) {
   event.preventDefault();
   createCard();
@@ -88,7 +86,6 @@ function clearInputFields() {
 };
 
 
-//event handler on window load/refresh
 function retrieveIdeasFromLocalStorage() {
   var localIdea;
   var parsedLocalIdea;
@@ -106,7 +103,6 @@ function retrieveIdeasFromLocalStorage() {
 };
 
 
-//event handlers for savedIdeasSection
 function runningMethodsOnCardButtons(event) {
   if (event.target.className === "delete") {
     removeCard();
@@ -128,11 +124,11 @@ function removeCard() {
 };
 
 function favoriteCard() {
-    if (event.target.className === 'star') {
-      starOnAndOff();
-    } else {
-      starOnAndOff();
-    }
+  if (event.target.className === 'star') {
+    starOnAndOff();
+  } else {
+    starOnAndOff();
+  }
 };
 
 function starOnAndOff() {
@@ -158,8 +154,6 @@ function toggleIconOnAndOff(on, off) {
 };
 
 
-//event handlers for showStarredIdeasButton
-// changed == to ===
 function filterStarredIdeas() {
   if (showStarredIdeasButton.innerText === "Show Starred Ideas") {
     showStarredIdeasButton.innerHTML = `<strong>Show All Ideas</strong>`;
@@ -189,7 +183,6 @@ function showAllCards() {
 };
 
 
-//event handler for searchBar
 function searchIdeas() {
   var cardsToBeHidden = document.querySelectorAll('.card');
   for (var i = 0; i < ideas.length; i++) {
